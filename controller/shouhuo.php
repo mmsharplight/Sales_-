@@ -1,0 +1,20 @@
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<?php
+@session_start();
+require_once '../utils/DBUtil.php';
+$orderid = $_GET['orderid'];
+$con = getConn();
+mysql_select_db("sales", $con);
+//echo "update orders set status = '1' where id=$orderid";
+//更新状态
+mysql_query("update orders set status = '2' where id=$orderid");
+mysql_close($con);
+?>
+<script type="text/javascript">
+	alert("收货成功");
+	window.location = "../view/myorder2.php"
+</script>
+</head>
+</html>
